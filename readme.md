@@ -1,4 +1,4 @@
-# What�s this?
+﻿#What’s this?
 
 [Mystic Pillars](https://play.google.com/store/apps/details?id=com.HolyCow.MysticPillars) is an Indian (Kannada) smartphone game.
 
