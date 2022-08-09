@@ -19,7 +19,7 @@ struct Cell
 struct Pillar
 {
     const unsigned index, initial, required;
-    std::vector<Pillar*> adjacent;
+    std::vector<unsigned> adjacent;
 
     unsigned current = 0;
     std::vector<Cell> cells;
@@ -59,16 +59,16 @@ void Maze::addPillar(unsigned initial, unsigned required)
 void Maze::addUniLink(unsigned i1, unsigned i2)
 {
     auto& p1 = pillars.at(i1);
-    auto& p2 = pillars.at(i2);
-    p1.adjacent.emplace_back(&p2);
+    pillars.at(i2); // just check
+    p1.adjacent.emplace_back(i2);
 }
 
 void Maze::addBiLink(unsigned i1, unsigned i2)
 {
     auto& p1 = pillars.at(i1);
     auto& p2 = pillars.at(i2);
-    p1.adjacent.emplace_back(&p2);
-    p2.adjacent.emplace_back(&p1);
+    p1.adjacent.emplace_back(i2);
+    p2.adjacent.emplace_back(i1);
 }
 
 void Maze::checkSums() const
@@ -104,8 +104,8 @@ void Maze::preprocess()
     }
     // Floyd-Warshall algo — init
     for (auto& u : pillars) {
-        for (auto& v : u.adjacent) {
-            u.cells[v->index].dist = 1;
+        for (auto v : u.adjacent) {
+            u.cells[v].dist = 1;
         }
         u.cells[u.index].dist = 0;
     }
