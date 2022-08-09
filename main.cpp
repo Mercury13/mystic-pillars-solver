@@ -323,7 +323,33 @@ void solve96()
     outSolution(r);
 }
 
+void solve97()
+{
+    Maze maze;
+    // Pillars, TOP row
+    maze.addPillar(2, 0);
+    // MID row
+    maze.addPillar(3, 0);
+    maze.addPillar(0, 4);
+    maze.addPillar(2, 6);
+    // BOTTOM row
+    maze.addPillar(0, 1);
+    maze.addPillar(5, 0);
+    maze.addPillar(0, 1);
+    // Links
+    maze.addBiLink(0, 2);
+    maze.addBiLink(1, 2);
+    maze.addMonoLink(3, 2);
+    maze.addBiLink(1, 4);
+    maze.addBiLink(4, 5);
+    maze.addBiLink(5, 6);
+    maze.addBiLink(3, 6);
+    // Go!
+    auto r = maze.solve(6);
+    outSolution(r);
+}
+
 int main()
 {
-    solve96();
+    solve97();
 }
