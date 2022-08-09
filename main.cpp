@@ -8,7 +8,9 @@ struct Cell
 {
     Pillar* source = nullptr;
     Pillar* target = nullptr;
-    Cell* reverse = nullptr;    // reverse cell for symmetrical one: ban reverse moves
+    /// If cell is symmetrical: reverse move (to ban them)
+    /// If cell is asymmetrical: null
+    Cell* reverse = nullptr;
     unsigned dist = 0;
     bool isSymmetrical = false;
     mutable unsigned nBans = 0;
