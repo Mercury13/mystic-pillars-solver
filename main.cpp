@@ -34,7 +34,7 @@ struct Maze
     unsigned nPillars() const { return pillars.size(); }
 
     void addPillar(unsigned initial, unsigned required);
-    void addMonoLink(unsigned i1, unsigned i2);
+    void addUniLink(unsigned i1, unsigned i2);
     void addBiLink(unsigned i1, unsigned i2);
 
     void checkSums() const;
@@ -54,7 +54,7 @@ void Maze::addPillar(unsigned initial, unsigned required)
     pillars.emplace_back(nPillars(), initial, required);
 }
 
-void Maze::addMonoLink(unsigned i1, unsigned i2)
+void Maze::addUniLink(unsigned i1, unsigned i2)
 {
     auto& p1 = pillars.at(i1);
     auto& p2 = pillars.at(i2);
@@ -339,7 +339,7 @@ void solve97()
     // Links
     maze.addBiLink(0, 2);
     maze.addBiLink(1, 2);
-    maze.addMonoLink(3, 2);
+    maze.addUniLink(3, 2);
     maze.addBiLink(1, 4);
     maze.addBiLink(4, 5);
     maze.addBiLink(5, 6);
@@ -366,15 +366,15 @@ void solve100()
     maze.addPillar(6, 0);   // 7
     maze.addPillar(6, 0);   // 8
     // Links
-    maze.addMonoLink(1, 0);
-    maze.addMonoLink(2, 0);
-    maze.addMonoLink(3, 1);
-    maze.addMonoLink(6, 2);
+    maze.addUniLink(1, 0);
+    maze.addUniLink(2, 0);
+    maze.addUniLink(3, 1);
+    maze.addUniLink(6, 2);
     maze.addBiLink(3, 4);
     maze.addBiLink(4, 5);
     maze.addBiLink(5, 6);
-    maze.addMonoLink(7, 3);
-    maze.addMonoLink(8, 6);
+    maze.addUniLink(7, 3);
+    maze.addUniLink(8, 6);
     // Go!
     auto r = maze.solve(8);
     outSolution(r);
