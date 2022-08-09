@@ -349,7 +349,38 @@ void solve97()
     outSolution(r);
 }
 
+void solve100()
+{
+    Maze maze;
+    // Pillars, TOP
+    maze.addPillar(0, 4);   // 0
+    // 2nd row
+    maze.addPillar(0, 4);   // 1
+    maze.addPillar(0, 4);   // 2
+    // MAIN row
+    maze.addPillar(0, 0);   // 3
+    maze.addPillar(0, 0);   // 4
+    maze.addPillar(0, 0);   // 5
+    maze.addPillar(0, 0);   // 6
+    // BOTTOM row
+    maze.addPillar(6, 0);   // 7
+    maze.addPillar(6, 0);   // 8
+    // Links
+    maze.addMonoLink(1, 0);
+    maze.addMonoLink(2, 0);
+    maze.addMonoLink(3, 1);
+    maze.addMonoLink(6, 2);
+    maze.addBiLink(3, 4);
+    maze.addBiLink(4, 5);
+    maze.addBiLink(5, 6);
+    maze.addMonoLink(7, 3);
+    maze.addMonoLink(8, 6);
+    // Go!
+    auto r = maze.solve(8);
+    outSolution(r);
+}
+
 int main()
 {
-    solve97();
+    solve100();
 }
